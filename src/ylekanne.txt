@@ -1,0 +1,51 @@
+/*    void ülekanne(){
+        String kellele;
+        double summa;
+        String selgitus;
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Kellele soovite ülekannet teha? ");
+        kellele=sc.nextLine();
+
+        Scanner kogus = new Scanner(System.in);
+        System.out.println("Kui palju soovite kanda? ");
+        summa=kogus.nextDouble();
+
+        Scanner miks = new Scanner(System.in);
+        System.out.println("Selgitus: ");
+        selgitus=miks.nextLine();
+
+        if ((kontojääk-kontojääk)<0){
+            System.out.println("Pole piisavalt vahendeid, et ülekannet teha.");
+        }
+        else{
+            kontojääk-=summa;
+            System.out.println("Ülekanne isikule " + kellele +", summas "+summa+"EUR, selgitusega: '" + selgitus +"' edukalt sooritatud.");
+        }
+
+    }    void ülekanne(){
+        String kellele;
+        double summa;
+        String selgitus;
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Kellele soovite ülekannet teha? ");
+        kellele=sc.nextLine();
+
+        Scanner kogus = new Scanner(System.in);
+        System.out.println("Kui palju soovite kanda? ");
+        summa=kogus.nextDouble();
+
+        Scanner miks = new Scanner(System.in);
+        System.out.println("Selgitus: ");
+        selgitus=miks.nextLine();
+
+        if ((kontojääk-kontojääk)<0){
+            System.out.println("Pole piisavalt vahendeid, et ülekannet teha.");
+        }
+        else{
+            kontojääk-=summa;
+            System.out.println("Ülekanne isikule " + kellele +", summas "+summa+" EUR, selgitusega: '" + selgitus +"' edukalt sooritatud.");
+        }
+
+    }*/
