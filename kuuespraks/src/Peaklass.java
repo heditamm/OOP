@@ -1,15 +1,25 @@
 import java.io.*;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
+import static java.util.Collections.sort;
 import static java.util.stream.Collectors.toList;
 
 public class Peaklass {
-    public static void main(String[] args) throws Exception {
-        System.out.println(loeTeosed("C:\\Users\\hedit\\IdeaProjects\\OOP\\kuuespraks\\src\\laenutused.txt"));
+    private static final String INPUT_FILE = "laenutused.txt";
 
+    public static <SuurimaViiviseLeidja> void main(String[] args) throws Exception {
+        List<Teos> teosed = loeTeosed(INPUT_FILE);
+        sort(teosed);
+        teosed.forEach(System.out::println);
+
+        ViiviseHoiataja viiviseHoiataja = new ViiviseHoiataja(0.2);
+        teosed.forEach(teos -> teos.arvutaViivis(viiviseHoiataja));
+        System.out.println(viiviseHoiataja.getHoiatatavadLaenutajad());
+
+        SuurimViiviseLeidja suurimaViiviseLeidja = new SuurimViiviseLeidja();
+        teosed.forEach(teos -> teos.arvutaViivis(suurimaViiviseLeidja));
+        suurimaViiviseLeidja.SaadaHoiatus();
     }
 
     public static List<Teos> loeTeosed(String failinimi) throws Exception {
