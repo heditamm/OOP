@@ -1,8 +1,8 @@
 abstract class Teos implements Comparable<Teos> {
-    private String teoseKirjeldus;
+    String teoseKirjeldus;
     String tähis;
-    private String laenutaja;
-    private int päevadeArv;
+    String laenutaja;
+    int päevadeArv;
 
     public Teos(String teoseKirjeldus, String tähis, String laenutaja, int päevadeArv) {
         this.teoseKirjeldus = teoseKirjeldus;
@@ -13,7 +13,7 @@ abstract class Teos implements Comparable<Teos> {
 
     abstract boolean kasHoidlast();
 
-    int laenutusaeg() {
+    private int laenutusaeg() {
         return switch (tähis) {
             case "roheline" -> 1;
             case "sinine" -> 60;

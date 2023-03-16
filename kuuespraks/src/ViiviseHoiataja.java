@@ -3,7 +3,7 @@ import java.util.List;
 
 public class ViiviseHoiataja implements Kontrollija {
     private double lubatudViivis;
-    List<String> üleAjaNimed = new ArrayList<>();
+    private List<String> üleAjaNimed = new ArrayList<>();
 
     public ViiviseHoiataja(double lubatudViivis) {
         this.lubatudViivis = lubatudViivis;
@@ -16,7 +16,7 @@ public class ViiviseHoiataja implements Kontrollija {
         }
     }
 
-    List<String> getHoiatavadLaenutajad() {
+    List<String> getHoiatatavadLaenutajad() {
         return üleAjaNimed;
     }
 }
