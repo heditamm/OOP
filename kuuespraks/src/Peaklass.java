@@ -1,32 +1,69 @@
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 
-import static java.util.Collections.sort;
-import static java.util.stream.Collectors.toList;
+import static java.util.Collections.*;
+
 
 public class Peaklass {
-    private static final String INPUT_FILE = "laenutused.txt";
+    static List<Lend> loeLennud(String failinimi) throws IOException {
+        ArrayList<Lend> lennud = new ArrayList<>();
 
-    public static <SuurimaViiviseLeidja> void main(String[] args) throws Exception {
-        List<Teos> teosed = loeTeosed(INPUT_FILE);
-        sort(teosed);
-        teosed.forEach(System.out::println);
+        File fail = new File(failinimi);
+        Scanner sc = new Scanner(fail, StandardCharsets.UTF_8);
+        while (sc.hasNextLine()) {
+            String rida = sc.nextLine();
+            String[] massiiv = rida.trim().split(" ");
 
-        ViiviseHoiataja viiviseHoiataja = new ViiviseHoiataja(0.2);
-        teosed.forEach(teos -> teos.arvutaViivis(viiviseHoiataja));
-        System.out.println(viiviseHoiataja.getHoiatatavadLaenutajad());
-
-        SuurimViiviseLeidja suurimaViiviseLeidja = new SuurimViiviseLeidja();
-        teosed.forEach(teos -> teos.arvutaViivis(suurimaViiviseLeidja));
-        suurimaViiviseLeidja.SaadaHoiatus();
+            List<String> list = new ArrayList<>(Arrays.asList(massiiv));
+            String sihtkoht = list.get(0);
+            if (list.size() == 2) {
+                double hind = Double.parseDouble(list.get(1));
+                Lend ajutineLend = new Lend(sihtkoht, hind);
+                lennud.add(ajutineLend);
+            }
+            if (list.size()==3){
+                String sihtkohaRiik = list.get(1);
+                double hind = Double.parseDouble(list.get(2));
+                RahvusvahelineLend ajutineRahvus = new RahvusvahelineLend(sihtkoht, hind, sihtkohaRiik);
+                lennud.add(ajutineRahvus);
+            }
+        }
+        return lennud;
     }
 
-    public static List<Teos> loeTeosed(String failinimi) throws Exception {
-        try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(failinimi), StandardCharsets.UTF_8))) {
-            return bufferedReader.lines().map(rida -> rida.split("; ")).map(reaOsad -> reaOsad[0].contains("/") ?
-                    new Ajakiri(reaOsad[0], reaOsad[1], reaOsad[2], Integer.parseInt(reaOsad[3])) :
-                    new Raamat(reaOsad[0], reaOsad[1], reaOsad[2], Integer.parseInt(reaOsad[3]))).collect(toList());
+    public static void main(String[] args) throws IOException {
+        List<Lend> lennud = loeLennud("lennud.txt");
+
+        TuristiklassiReisija testIsikYks = new TuristiklassiReisija("Jane Pane");
+        TuristiklassiReisija testIsikKaks = new TuristiklassiReisija("Jaan Paan");
+
+        EsimeseKlassiReisija testEsimeneYks = new EsimeseKlassiReisija(2);
+        EsimeseKlassiReisija testEsimeneKaks = new EsimeseKlassiReisija(1);
+
+        lisaLendudele(lennud, testEsimeneYks);
+        lisaLendudele(lennud, testEsimeneKaks);
+        lisaLendudele(lennud, testIsikYks);
+        lisaLendudele(lennud, testIsikKaks);
+
+        sort(lennud);
+
+        for (Lend lend : lennud) {
+            System.out.println(lend);
+            lend.väljastaReisijad();
         }
+
+    }
+
+    static void lisaLendudele(List<Lend> lennud, Reisija reisija) {
+        shuffle(lennud);
+        lennud.get(0).transpordiReisija(reisija);
+        lennud.get(1).transpordiReisija(reisija);
+        lennud.get(2).transpordiReisija(reisija);
     }
 }
