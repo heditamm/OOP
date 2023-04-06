@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d410ddc7-a3d7-4aa1-8444-4ef0804dd2eb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../kuuespraks/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../kuuespraks/src/Peaklass.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../src/laenutused.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../kuuespraks/src/ViiviseHoiataja.java" beforeDir="false" afterPath="$PROJECT_DIR$/../kuuespraks/src/ViiviseHoiataja.java" afterDir="false" />
-    </list>
+    <list default="true" id="d410ddc7-a3d7-4aa1-8444-4ef0804dd2eb" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,7 +20,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/hedit/IdeaProjects/OOP/projekt",
+    "last_opened_file_path": "C:/Users/hedit/IdeaProjects/Projekt",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
@@ -41,6 +36,7 @@
       <option name="presentableId" value="Default" />
       <updated>1678956519618</updated>
       <workItem from="1678956520771" duration="9000" />
+      <workItem from="1679512991989" duration="19000" />
     </task>
     <servers />
   </component>
